@@ -20,5 +20,6 @@ solar-system.png
 .talismanrc
 coverage
 test-results.xml
-# ignore mongo.env file
-mongo.env
+# ignore .env files
+.mongo.env
+.dockerHub.env
