@@ -45,4 +45,4 @@ jobs:
               uses: actions/upload-artifact@v4.6.2
               with:
                 name: build-${{ matrix.os }}-${{ matrix.node-version }}
-                path: builds/build-${{ matrix.os }}-${{ matrix.node-version }}.xml
+                path: *.xml
