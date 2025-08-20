@@ -1,0 +1,35 @@
+name: Code Coverage Workflow
+on:
+    push:
+        branches:
+            -main
+env:
+    MONGO_URI: "mongodb+srv://supercluster.d83jj.mongodb.net/superData"
+    MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
+    MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+jobs:
+    code_coverage:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5.0.0
+
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v4.4.0
+              with:
+                  node-version: '18'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm test
+
+            - name: Generate coverage report
+              run: npm run coverage
+
+            - name: Upload coverage report
+              uses: actions/upload-artifact@v4.6.2
+              with:
+                  name: coverage-report
+                  path: coverage/coverage-report.xml

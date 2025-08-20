@@ -1,4 +1,4 @@
-name: solar system workflow
+name: Unit Testting Workflow
 
 on:
     workflow_dispatch:
@@ -45,4 +45,4 @@ jobs:
               uses: actions/upload-artifact@v4.6.2
               with:
                 name: build-${{ matrix.os }}-${{ matrix.node-version }}
-                path: build.xml
+                path: builds/build-${{ matrix.os }}-${{ matrix.node-version }}.xml
