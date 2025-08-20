@@ -27,7 +27,7 @@ jobs:
                   password: ${{ secrets.DOCKER_PATOKEN }}
 
             - name: Build Docker Image
-              run: docker build -t sotirusama/solar-system:latest .
+              run: docker build -t sotirusama/solar-system:${{ github.sha }} .
 
             - name: Push Docker Image
-              run: docker push sotirusama/solar-system:latest
+              run: docker push sotirusama/solar-system:${{ github.sha }}
